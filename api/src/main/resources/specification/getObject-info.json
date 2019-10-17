@@ -1,0 +1,8 @@
+{
+    "description": "This method returns an object geometry in obj format as an array of byte",
+    "content": "vertices, faces, groups and objects",
+    "urlPattern": "/map/object/{name}",
+    "parameterType": "String",
+    "contentType": "application/x-tgif",
+    "method": "GET"
+}

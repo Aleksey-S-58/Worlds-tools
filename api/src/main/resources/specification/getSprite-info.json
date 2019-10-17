@@ -1,0 +1,8 @@
+{
+    "description": "This method returns a sprite object either in png or in jpg format as an array o byte",
+    "usage": "sprites could be used to show trees or long distanced objects",
+    "urlPattern": "/map/sprite/{name}",
+    "parameterType": "String",
+    "contentType": "application/x-tgif",
+    "method": "GET"
+}
