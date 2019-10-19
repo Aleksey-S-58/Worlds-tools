@@ -23,6 +23,7 @@ create table if not exists ThreeDMap.object_description (
 -- create sequence
 create sequence ThreeDMap.location_sequence start 1;
 create sequence ThreeDMap.description_sequence start 1;
+create sequence ThreeDMap.object_id_sequence start 1;
 
 -- create table that will store objects geometry (bytea)
 create table if not exists ThreeDMap.geometry (
