@@ -1,5 +1,4 @@
 package repository;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -21,20 +20,15 @@ import utils.LocalisationConfiguration;
 @Category(IntegrationTest.class)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {JpaConfig.class, LocalisationConfiguration.class, PropertyConfigurer.class}, loader = AnnotationConfigContextLoader.class)
-public class LocationRepositoryIT implements IntegrationTest {
+public class DescriptionRepositoryIT {
 	
 @Autowired
-private LocationRepository repository;
+private DescriptionRepository repository;
 	
 	@Test
-	public void testGetNextObjectId() {
-		long i = repository.getNextObjectId();
-		Assert.assertEquals(i + 1, repository.getNextObjectId());
+	public void testGetNextDescriptionId() {
+		long i = repository.getNextDescriptionId();
+		Assert.assertEquals(i + 1, repository.getNextDescriptionId());
 	}
-	
-	@Test
-	public void testGetNextLocationId() {
-		long i = repository.getNextLocationId();
-		Assert.assertEquals(i + 1, repository.getNextLocationId());
-	} 	
+	 	
 }
