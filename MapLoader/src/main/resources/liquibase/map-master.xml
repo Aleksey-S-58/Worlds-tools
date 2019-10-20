@@ -7,4 +7,5 @@
   <include file="liquibase/changeLog-1.xml"/>
   <include file="liquibase/changeLog-2.xml"/>
   <include file="liquibase/changeLog-3.xml"/>
+  <include file="liquibase/changeLog-4.xml"/>
 </databaseChangeLog>

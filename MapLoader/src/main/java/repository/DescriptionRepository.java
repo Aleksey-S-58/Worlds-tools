@@ -22,5 +22,7 @@ public interface DescriptionRepository extends CrudRepository<Description, Long>
 	@Query("SELECT d FROM Description d WHERE d.objectId IN :list")
 	public List<Description> getWhichInList(@Param("list") List<Long> identifiers);
 	
-	
+	//TODO rewrite via JPQL or HQL not to be nailed to postgresql
+	@Query(value = "select nextval('ThreeDMap.description_sequence')", nativeQuery = true)
+	public long getNextDescriptionId();
 }
