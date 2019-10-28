@@ -1,9 +1,15 @@
 
 3D map development tool.
 This project designed as a plugable dependency that provides an access to a map and 3DO via http protocol.
-To use it, you should add worlds-api dependency, configure database properties in jpa.properties, add and configure logger dependency (for example logback), add front-end dependency: ---
+To use it, you should add worlds-api dependency, configure database properties in jpa.properties, add and configure logger dependency (for example logback), add front-end dependency: https://github.com/IvanSergeiSh/Worlds-frontend.git
 If you are developing a web application then create AnnotationConfigWebApplicationContext, register configurational bean config.web.WebConfiguration from the main dependency and add DispatcherServlet.
-A sample of launcher is awailable in repository: .........
+A sample of launcher is awailable in repository: https://github.com/IvanSergeiSh/Worlds-Launcher.git
+
+Other linked repositories:
+A tool that is intended to save into a database a 3D map painted in 3D editor.
+https://github.com/IvanSergeiSh/Worlds_map_uploader.git
+A tool that is intended to save a 3DO to a database.
+https://github.com/Aleksey-S-58/worlds-3do-jdbc-uploader.git
 
 What is inside?
 The project subdivided to a several subdependencies: (map-loader, object-loader, object-loader-interface, earth-localization).
