@@ -1,0 +1,6 @@
+{
+    "description": "This method returns all object types that could be returned during /map request",
+    "urlPattern": "/map/supported/object/types",
+    "method": "GET",
+    "responseExample": ["THREE_D_OBJECT","SPRITE"]
+}

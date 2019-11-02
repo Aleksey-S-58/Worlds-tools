@@ -1,0 +1,41 @@
+{
+ "getMap": {
+    "description": "This method returns a list of coordinates and object names",
+    "responseFormat": "array of json objects (name: String, type: String, latitude: double, longitude: double, hight: double, alphaX: double, alphaY: double, alphaZ: double)",
+    "urlPattern": "/map/{hight}/{latitude}/{longitude}",
+    "method": "GET",
+    "responseExample": [{"name":"elka","type":"THREE_D_OBJECT","latitude":1.0,"longitude":1.0,"hight":1.0,"alphaX":1.0,"alphaY":1.0,"alphaZ":1.0}]
+    },
+ "getSupportedObjectTypes": {
+    "description": "This method returns a list of all possible object types",
+    "urlPattern": "/map/supported/object/types",
+    "method": "GET",
+    "responseExample": ["THREE_D_OBJECT","SPRITE"]
+    },
+ "getObjectGeometry": {
+    "description": "This method returns an object geometry in obj format as an array of bytes",
+    "urlPattern": "/map/object/{name}",
+    "parameterType": "String",
+    "contentType": "application/x-tgif",
+    "method": "GET"
+    },
+ "getObjectMaterial": {
+    "description": "This method returns an object material in mtl format as an array of bytes",
+    "urlPattern": "/map/material/{name}",
+    "parameterType": "String",
+    "contentType": "application/x-tgif",
+    "method": "GET"
+    },
+ "getSprite": {
+    "description": "This method returns a sprite either in png or in jpg format as an array of bytes",
+    "urlPattern": "/map/sprite/{name}",
+    "parameterType": "String",
+    "contentType": "application/x-tgif",
+    "method": "GET"
+    },
+ "healthCheck": {
+    "description": "This method can be used to check service availability",
+    "urlPattern": "/map",
+    "method": "HEAD"
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "description": "This method returns an object material in mtl format as an array of byte",
+    "content": "materials and textures",
+    "urlPattern": "/map/material/{name}",
+    "parameterType": "String",
+    "contentType": "application/x-tgif",
+    "method": "GET"
+}

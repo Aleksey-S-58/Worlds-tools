@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns = "http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation= "http://maven.apache.org/POM/4.0.0 
+    http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.gmail.ascanada52</groupId>
+	<artifactId>earth-localization</artifactId>
+	<version>1.0.0.alpha-RELEASE</version>
+	<name>Earth-localization-strategy</name>
+	<packaging>jar</packaging>
+	
+	<properties>
+		<!-- set up java 8 -->
+		<maven.compiler.source>1.8</maven.compiler.source>
+    	<maven.compiler.target>1.8</maven.compiler.target>	
+		<spring-version>5.1.2.RELEASE</spring-version>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.gmail.ascanada52</groupId>
+			<artifactId>object-loader-interface</artifactId>
+			<version>1.0.0.alpha-RELEASE</version>
+		</dependency>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>	
+</project>
+

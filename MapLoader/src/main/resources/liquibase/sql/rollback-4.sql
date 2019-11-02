@@ -1,0 +1,1 @@
+alter table ThreeDMap.object_description drop column object_type;

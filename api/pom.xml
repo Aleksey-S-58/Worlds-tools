@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns = "http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation= "http://maven.apache.org/POM/4.0.0 
+    http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.gmail.ascanada52</groupId>
+	<artifactId>worlds-api</artifactId>
+	<version>1.0.0.alpha-RELEASE</version>
+	<name>api</name>
+	
+	<properties>
+		<!-- set up java 8 -->
+		<maven.compiler.source>1.8</maven.compiler.source>
+    	<maven.compiler.target>1.8</maven.compiler.target>
+		<spring-version>5.1.2.RELEASE</spring-version>
+		<hibernate.version>4.3.10.Final</hibernate.version>
+	</properties>
+	
+	<build>
+		<plugins>
+			<plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-failsafe-plugin</artifactId>
+        		<version>2.13</version>
+        		<!-- License Apache 2.0 -->
+        		<executions>
+          			<execution>
+            			<id>integration-test</id>
+            			<goals>
+              				<goal>integration-test</goal>
+            			</goals>
+          			</execution>
+          			<!-- <execution>
+            			<id>verify</id>
+            			<goals>
+              				<goal>verify</goal>
+            			</goals>
+          			</execution>
+          			-->
+        		</executions>
+      		</plugin>
+		</plugins>
+	</build>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.gmail.ascanada52</groupId>
+			<artifactId>object-loader-interface</artifactId>
+			<version>1.0.0.alpha-RELEASE</version>
+		</dependency>
+		<!--  -->
+		<dependency>
+			<groupId>com.gmail.ascanada52</groupId>
+			<artifactId>map-loader</artifactId>
+			<version>1.0.0.alpha-RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>com.gmail.ascanada52</groupId>
+			<artifactId>object-loader</artifactId>
+			<version>1.0.0.alpha-RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>com.gmail.ascanada52</groupId>
+			<artifactId>earth-localization</artifactId>
+			<version>1.0.0.alpha-RELEASE</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.jayway.restassured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>2.9.0</version>
+			<scope>test</scope>
+			<!-- License Apache 2.0 -->
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.8</version>
+			<!-- License Apache 2.0 -->
+		</dependency>
+		<!-- Database driver -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4.1209.jre7</version>
+			<!-- License: http://www.postgresql.org/about/licence/ -->
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+		<dependency>
+		    <groupId>com.h2database</groupId>
+		    <artifactId>h2</artifactId>
+		    <version>1.4.196</version>
+		    <scope>test</scope>
+		    <!-- License EPL 1.0 MPL 2.0 -->
+		</dependency>
+		<!-- Need to configure data source -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+			<!-- License Apache 2.0 -->
+		</dependency>
+		<!-- To use JPA we need to load vendor adapter -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+			<!-- License GNU Lesser General Public License
+			http://www.gnu.org/licenses/lgpl-2.1.html 
+			version 4.3.10.Final -->
+		</dependency>
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-entitymanager</artifactId>
+		    <version>${hibernate.version}</version>
+		    <!-- License GNU Lesser General Public License
+			http://www.gnu.org/licenses/lgpl-2.1.html 
+			version 4.3.10.Final -->
+		</dependency>
+	</dependencies>
+</project>
