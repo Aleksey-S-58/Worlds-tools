@@ -35,3 +35,14 @@ A controller in the main dependency supports help queries via OPTIONS requests.
 To configure custom help files you should anable it via property custom-specification-enabled=true and then specify a path to a custom help file via special property (see service.simple.implementation.SimpleApiService)
 
 
+If you need any additional information please contact us.
+
+Aleksey Shishkin
+mail: ascanada52@gmail.com
+Skype: aleksey.s58
+
+Ivan Shishkin
+mail: IvanSergeiSh@gmail.com
+Skype: shishkaivan2
+
+
