@@ -7,7 +7,7 @@
 
 	<groupId>com.gmail.ascanada52</groupId>
 	<artifactId>worlds-api</artifactId>
-	<version>1.0.0.alpha-RELEASE</version>
+	<version>1.0.1</version>
 	<name>api</name>
 	
 	<properties>
@@ -48,23 +48,23 @@
 		<dependency>
 			<groupId>com.gmail.ascanada52</groupId>
 			<artifactId>object-loader-interface</artifactId>
-			<version>1.0.0.alpha-RELEASE</version>
+			<version>${project.version}</version>
 		</dependency>
 		<!--  -->
 		<dependency>
 			<groupId>com.gmail.ascanada52</groupId>
 			<artifactId>map-loader</artifactId>
-			<version>1.0.0.alpha-RELEASE</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.gmail.ascanada52</groupId>
 			<artifactId>object-loader</artifactId>
-			<version>1.0.0.alpha-RELEASE</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.gmail.ascanada52</groupId>
 			<artifactId>earth-localization</artifactId>
-			<version>1.0.0.alpha-RELEASE</version>
+			<version>${project.version}</version>
 		</dependency>
 		
 		<dependency>
