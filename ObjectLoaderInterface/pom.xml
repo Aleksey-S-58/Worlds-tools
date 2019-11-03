@@ -7,7 +7,7 @@
 
 	<groupId>com.gmail.ascanada52</groupId>
 	<artifactId>object-loader-interface</artifactId>
-	<version>1.0.0.alpha-RELEASE</version>
+	<version>1.0.1</version>
 	<name>Object-loader-interface</name>
 	<packaging>jar</packaging>
 	
