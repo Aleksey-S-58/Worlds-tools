@@ -31,6 +31,10 @@ public class ObjectLoader implements ThreeDObjectService {
 	
 	private static final String SPRITE = "sprite";
 	
+	private static final char DOT = '.';
+	
+	private static final char UNDERLINE = '_';
+	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ObjectLoader.class);
 	
 	private GeometryRepository geometryRepository;
@@ -51,6 +55,14 @@ public class ObjectLoader implements ThreeDObjectService {
 		this.spriteRepository = spriteRepository;
 	}
 	
+	private String replaceDot(String str) {
+		if (str.indexOf(DOT) > -1) {
+			return str.replace(DOT, UNDERLINE);
+		} else {
+			return str;
+		}
+	}
+
 	private byte[] getBytes(AbstractObject o) {
 		if (o == null) {
 			LOGGER.warn("Object not found!");
@@ -63,19 +75,20 @@ public class ObjectLoader implements ThreeDObjectService {
 	@Transactional
 	public byte[] getObject(String name) {
 		LOGGER.debug(DEBUG_MESSAGE, OBJECT, name);
-		return getBytes(geometryRepository.findOne(name));
+		return getBytes(geometryRepository.findOne(replaceDot(name)));
 	}
 
 	@Transactional
 	public byte[] getMaterial(String name) {
 		LOGGER.debug(DEBUG_MESSAGE, MATERIAL, name);
-		return getBytes(materialRepository.findOne(name));
+		return getBytes(materialRepository.findOne(replaceDot(name)));
 	}
 
+	@Transactional
 	@Override
 	public byte[] getSprite(String name) {
 		LOGGER.debug(DEBUG_MESSAGE, SPRITE, name);
-		return getBytes(spriteRepository.findOne(name));
+		return getBytes(spriteRepository.findOne(replaceDot(name)));
 	}
 
 }
