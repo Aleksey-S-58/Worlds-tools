@@ -34,11 +34,11 @@ import service.ThreeDObjectService;
  */
 @Controller
 public class MapController {
-	
+
 	public static final String ALLOW = "Allow";
 	public static final String CONTENT_TYPE = "Content-Type";
 	public static final String CONTENT_LENGTH = "Content-Length";
-	
+
 	private static final String PROJECT_REPOSITORY = "https://github.com/Aleksey-S-58/Worlds-tools.git";
 	
 	private ThreeDObjectService objectService;
@@ -147,11 +147,13 @@ public class MapController {
 	 * headers:
 	 * <br>Accept-Ranges: bytes
 	 * <br>Content-Length: ...
-	 * <br>Content-Type: application/x-tgif
+	 * <br>Content-Type: application/x-tgif, 
+	 * image/bmp, image/jpg, image/png, image/tiff, image/gif
 	 * @param name - object's name
 	 * @return an mtl file
 	 */	
-	@RequestMapping(path = "/map/material/{name}", method = RequestMethod.GET, produces = "application/x-tgif")
+	@RequestMapping(path = "/map/material/{name}", method = RequestMethod.GET, 
+			produces = {"application/x-tgif", "image/bmp", "image/jpg", "image/png", "image/tiff", "image/gif"})
 	@ResponseBody
 	public byte[] getMaterial(@PathVariable("name") String name) {
 		return objectService.getMaterial(name);
@@ -161,14 +163,16 @@ public class MapController {
 	 * headers:
 	 * <br>Accept-Ranges: bytes
 	 * <br>Content-Length: ...
-	 * <br>Content-Type: application/x-tgif
+	 * <br>Content-Type: application/x-tgif, 
+	 * image/bmp, image/jpg, image/png, image/tiff, image/gif
 	 * @param name - a name of sprite
 	 * @return an png or jpg file
 	 */	
-	@RequestMapping(path = "/map/sprite/{name}", method = RequestMethod.GET, produces = "application/x-tgif")
+	@RequestMapping(path = "/map/sprite/{name}", method = RequestMethod.GET, 
+			produces = {"application/x-tgif", "image/bmp", "image/jpg", "image/png", "image/tiff", "image/gif"})
 	@ResponseBody
 	public byte[] getSprite(@PathVariable("name") String name) {
 		return objectService.getSprite(name);
 	}
-	
+
 }
