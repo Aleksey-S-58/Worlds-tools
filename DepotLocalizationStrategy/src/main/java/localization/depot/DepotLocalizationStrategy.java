@@ -77,7 +77,7 @@ public class DepotLocalizationStrategy implements Localization {
 	}
 
 	@Override
-	public List<Square> getSquare(long hight, double latitude, double longitude) {
+	public List<Square> getSquare(double hight, double latitude, double longitude) {
 		double increment = getIncrement(hight, radius);
 		double minLatitude = decrement(latitude, mapBounds.getMinLatitude(), increment);
 		double maxLatitude = increment(latitude, mapBounds.getMaxLatitude(), increment);

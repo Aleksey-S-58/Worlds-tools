@@ -123,7 +123,7 @@ public class MapController {
 	
 	@GetMapping("/map/{hight}/{latitude}/{longitude}")
 	@ResponseBody
-	public ResponseEntity<List<ThreeDObject>> getObjects(@PathVariable("hight") long hight, 
+	public ResponseEntity<List<ThreeDObject>> getObjects(@PathVariable("hight") double hight, 
 			@PathVariable("latitude") double latitude, 
 			@PathVariable("longitude") double longitude) {
 		return ResponseEntity.ok(mapService.getObjects(hight, latitude, longitude));

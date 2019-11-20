@@ -80,7 +80,7 @@ public class SimpleMapService implements MapService {
 		return result.stream().distinct().collect(Collectors.toList());
 	}
 
-	public List<ThreeDObject> getObjects(long hight, double latitude, double longitude) {
+	public List<ThreeDObject> getObjects(double hight, double latitude, double longitude) {
 		if (objects == null)
 			objects = loadObjects('/' + mapFileName);
 		// We have to load objects from file lazily as we can't do it during bean initialization because application is not published yet.

@@ -16,6 +16,6 @@ public interface MapService {
 	 * latitude, longitude - coordinates of a central point.
 	 * 
 	 */
-	public List<ThreeDObject> getObjects(long hight, double latitude, double longitude);
+	public List<ThreeDObject> getObjects(double hight, double latitude, double longitude);
 	
 }

@@ -98,7 +98,7 @@ public class ORMBasedMap implements MapService {
 
 	@Transactional
 	@Override
-	public List<ThreeDObject> getObjects(long hight, double latitude, double longitude) {
+	public List<ThreeDObject> getObjects(double hight, double latitude, double longitude) {
 		List<Square> localizations = localization.getSquare(hight, latitude, longitude);
 		List<Location> locations = getLocations(localizations);
 		if (!locations.isEmpty()) {

@@ -14,6 +14,6 @@ public interface Localization {
 	 * @param hight - height of observation point.
 	 * @return a list of squares which dimensions depends on height of observation point.
 	 */
-	public List<Square> getSquare(long hight, double latitude, double longitude);
+	public List<Square> getSquare(double hight, double latitude, double longitude);
 	
 }
