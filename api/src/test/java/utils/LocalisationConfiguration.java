@@ -18,7 +18,7 @@ public class LocalisationConfiguration {
 		return new Localization() {
 			
 			@Override
-			public List<Square> getSquare(long hight, double latitude, double longitude) {
+			public List<Square> getSquare(double hight, double latitude, double longitude) {
 				// TODO Auto-generated method stub
 				return null;
 			}

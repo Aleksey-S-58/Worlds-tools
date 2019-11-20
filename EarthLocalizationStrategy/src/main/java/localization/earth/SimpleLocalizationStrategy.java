@@ -28,7 +28,7 @@ public class SimpleLocalizationStrategy implements Localization {
 	 */
 
 	@Override
-	public List<Square> getSquare(long hight, double latitude, double longitude) {
+	public List<Square> getSquare(double hight, double latitude, double longitude) {
 		double dPhi = getDeltaPhi(hight, RADIUS);
 		Square s = new Square(latitude - dPhi, latitude + dPhi, longitude - dPhi, longitude + dPhi);
 		if (s.getMinLatitude() >= -90 && s.getMaxLatitude() <= 90) {
@@ -134,7 +134,7 @@ public class SimpleLocalizationStrategy implements Localization {
 		}
 	}
 	
-	private double getDeltaPhi(long hight, double length) {
+	private double getDeltaPhi(double hight, double length) {
 		if (hight > length) { 
 			return 0;
 		} else {
