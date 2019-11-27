@@ -3,6 +3,7 @@ package service.simple.implementation;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 
@@ -18,7 +19,7 @@ public abstract class ResourceReader {
 
 	protected Logger logger;
 	protected ServletContext context;
-	
+
 	protected InputStream getStream(String name) {
 		InputStream stream = context.getResourceAsStream(name);
 		if (stream == null ) {
@@ -26,7 +27,17 @@ public abstract class ResourceReader {
 		}
 		return stream;
 	}
-	
+
+	protected byte[] getBytes(List<Byte> bytes) {
+		byte[] result = new byte[bytes.size()];
+		int i = 0;
+		for (byte b : bytes) {
+			result[i] = b;
+			i++;
+		}
+		return result;
+	}
+
 	protected byte[] readFile(String name) throws IOException {
 		InputStream stream = getStream(name);
 		int available = stream.available();
@@ -41,13 +52,7 @@ public abstract class ResourceReader {
 			buffer = new byte[available];
 		}
 		stream.close();
-		byte[] result = new byte[bytes.size()];
-		int i = 0;
-		for (byte b : bytes) {
-			result[i] = b;
-			i++;
-		}
-		return result;
+		return getBytes(bytes);
 	}
-	
+
 }

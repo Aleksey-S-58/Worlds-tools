@@ -72,21 +72,46 @@ public class ORMBasedMap implements MapService {
 				}).orElse(new Description(0, UNKNOWN_OBJECT, ObjectType.THREE_D_OBJECT, objectId, Double.MAX_VALUE));
 	}
 
+	/**
+	 * A factory method that creates a 3DO by its description and location.
+	 * <br>If an object's name is {@value #UNKNOWN_OBJECT} then it returns Optional.empty().
+	 * @param description - is used to fill an object's name and type.
+	 * @param location - is used to fill 3DO location.
+	 * @return Optional.ofNullable of 3DO.
+	 */
+	private Optional<ThreeDObject> getObject(Description description, Location location) {
+		if (description.getName() != UNKNOWN_OBJECT) {
+			ThreeDObject value = new ThreeDObject(description.getName(), description.getType(),
+					location.getLatitude(), location.getLongitude(), 
+					location.getHight(), location.getAlphaX(), 
+					location.getAlphaY(), location.getAlphaZ());
+			return Optional.of(value);
+		} else {
+			return Optional.empty();
+		}
+	}
+
+	/**
+	 * The method looks for most detailed objects of each object_id.
+	 * @param observer - an observer location.
+	 * @param locations - all object locations loaded from database.
+	 * @param descriptions - descriptions of various detailed objects which can be seen by an observer. 
+	 * @return a list of distinct 3DO visible from the observer's location.
+	 */
 	private List<ThreeDObject> mapToObjects(SimpleGeolocation observer, List<Location> locations, List<Description> descriptions) {
 		return locations.stream().map(location -> {
 			double distance = observer.getDistance(location);
 			Description description = getVisibleObject(distance, location.getObjectId(), descriptions);
-			ThreeDObject value = null;
-			if (description.getName() != UNKNOWN_OBJECT) {
-				value = new ThreeDObject(description.getName(), description.getType(),
-						location.getLatitude(), location.getLongitude(), 
-						location.getHight(), location.getAlphaX(), 
-						location.getAlphaY(), location.getAlphaZ());
-			}
-			return Optional.ofNullable(value);
-		}).filter(o -> o.isPresent()).map(o -> o.get()).collect(Collectors.toList());
+			return getObject(description, location);
+		}).filter(o -> o.isPresent()).map(o -> o.get())
+				.collect(Collectors.toList());
 	}
 	
+	/**
+	 * This method loads all object locations in the particular square.
+	 * @param localizations - according to the strategy an observing square can be represented by several squares.
+	 * @return a list of object locations stored in database.
+	 */
 	private List<Location> getLocations(List<Square> localizations) {
 		List<Location> locations = new LinkedList<>();
 		for (Square square : localizations) {
