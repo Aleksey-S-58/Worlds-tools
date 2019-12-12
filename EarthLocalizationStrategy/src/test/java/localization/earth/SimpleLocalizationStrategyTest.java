@@ -16,7 +16,7 @@ import service.Square;
  */
 public class SimpleLocalizationStrategyTest {
 	
-	private Localization strategy = new SimpleLocalizationStrategy();
+	private Localization strategy = new SimpleLocalizationStrategy(null);
 
 	@Test
 	public void testGetSquare() {
