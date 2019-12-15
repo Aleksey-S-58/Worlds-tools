@@ -14,7 +14,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
@@ -54,7 +53,8 @@ public class JpaConfig {
 	@Bean(name = "jpaVendorAdapter")
 	public JpaVendorAdapter getVendorAdapter() {
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-		adapter.setDatabase(Database.POSTGRESQL); // TODO Think about how to move it out to property file, if necessary.
+		// We also can specify database via property file if necessary. {adapter.setDatabase(Database)}
+		// Enum org.springframework.orm.jpa.vendor.Database contains all available values.
 		adapter.setGenerateDdl(false);
 		return adapter;
 	}

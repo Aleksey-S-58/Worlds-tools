@@ -2,8 +2,10 @@ package service.database.object.loader;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import data.AbstractObject;
 import repository.GeometryRepository;
@@ -12,6 +14,7 @@ import repository.SpriteRepository;
 import service.ThreeDObjectService;
 
 import java.lang.IllegalArgumentException;
+import java.util.Optional;
 
 /**
  * This implementation uses relational database to store 3DO.
@@ -63,32 +66,40 @@ public class ObjectLoader implements ThreeDObjectService {
 		}
 	}
 
-	private byte[] getBytes(AbstractObject o) {
-		if (o == null) {
-			LOGGER.warn("Object not found!");
+	private <T extends AbstractObject> byte[] getBytes(Optional<T> o) {
+		if (o == null || !o.isPresent()) {
+			LOGGER.warn("Object wasn't found!");
 			return new byte[0];
 		} else {
-			return o.getBytes();
+			return o.get().getBytes();
+		}
+	}
+
+	private <E extends AbstractObject, T extends CrudRepository<E, String>> 
+	byte[] loadBytes(String name, T repsitory, String debugMessage) {
+		LOGGER.debug(DEBUG_MESSAGE, debugMessage, name);
+		if (StringUtils.isEmpty(name)) {
+			LOGGER.warn("Empty name {}!", name);
+			return new byte[0];
+		} else {
+			return getBytes(repsitory.findById(replaceDot(name)));
 		}
 	}
 
 	@Transactional
 	public byte[] getObject(String name) {
-		LOGGER.debug(DEBUG_MESSAGE, OBJECT, name);
-		return getBytes(geometryRepository.findOne(replaceDot(name)));
+		return loadBytes(name, geometryRepository, OBJECT);
 	}
 
 	@Transactional
 	public byte[] getMaterial(String name) {
-		LOGGER.debug(DEBUG_MESSAGE, MATERIAL, name);
-		return getBytes(materialRepository.findOne(replaceDot(name)));
+		return loadBytes(name, materialRepository, MATERIAL);
 	}
 
 	@Transactional
 	@Override
 	public byte[] getSprite(String name) {
-		LOGGER.debug(DEBUG_MESSAGE, SPRITE, name);
-		return getBytes(spriteRepository.findOne(replaceDot(name)));
+		return loadBytes(name, spriteRepository, SPRITE);
 	}
 
 }
