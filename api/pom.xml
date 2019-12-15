@@ -15,7 +15,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
     	<maven.compiler.target>1.8</maven.compiler.target>
 		<spring-version>5.1.2.RELEASE</spring-version>
-		<hibernate.version>4.3.10.Final</hibernate.version>
+		<hibernate.version>5.2.17.Final</hibernate.version>
 	</properties>
 	
 	<build>
@@ -142,16 +142,14 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
 			<!-- License GNU Lesser General Public License
-			http://www.gnu.org/licenses/lgpl-2.1.html 
-			version 4.3.10.Final -->
+			http://www.gnu.org/licenses/lgpl-2.1.html -->
 		</dependency>
 		<dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-entitymanager</artifactId>
 		    <version>${hibernate.version}</version>
 		    <!-- License GNU Lesser General Public License
-			http://www.gnu.org/licenses/lgpl-2.1.html 
-			version 4.3.10.Final -->
+			http://www.gnu.org/licenses/lgpl-2.1.html -->
 		</dependency>
 	</dependencies>
 </project>

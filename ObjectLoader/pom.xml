@@ -15,7 +15,8 @@
 		<!-- set up java 8 -->
 		<maven.compiler.source>1.8</maven.compiler.source>
     	<maven.compiler.target>1.8</maven.compiler.target>	
-		<hibernate.version>4.3.10.Final</hibernate.version>
+		<spring.data.version>2.1.2.RELEASE</spring.data.version>
+		<hibernate.version>5.2.17.Final</hibernate.version>
 	</properties>
 	
 	<dependencies>
@@ -33,7 +34,7 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			<version>1.10.1.RELEASE</version>
+			<version>${spring.data.version}</version>
 			<!-- Notification be sure that spring-data-jpa version compatable with jpa-vendor adapter
 				For hibernate check accordingly 
 				org.springframework.orm.jpa.vendor.HibernateJpaDialect.prepareFlushMode()
@@ -48,7 +49,7 @@
 			<version>${hibernate.version}</version>
 			<!-- License GNU Lesser General Public License
 			http://www.gnu.org/licenses/lgpl-2.1.html 
-			version 4.3.10.Final -->
+			LGPL 2.1 -->
 		</dependency>
 	</dependencies>	
 </project>
