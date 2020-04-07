@@ -2,7 +2,7 @@ package dto;
 
 import java.io.Serializable;
 
-import data.ObjectType;
+import data.TypeMarker;
 import service.Geolocation;
 
 /**
@@ -19,7 +19,7 @@ public class ThreeDObject implements Serializable, Geolocation {
 
 	private String name;
 	
-	private ObjectType type;
+	private String type;
 
 	private double latitude;
 	
@@ -37,7 +37,9 @@ public class ThreeDObject implements Serializable, Geolocation {
 		
 	}
 
-	public ThreeDObject(String name, ObjectType type, double latitude, double longitude, double hight, double alphaX, double alphaY, double alphaZ) {
+	public ThreeDObject(String name, String type, 
+			double latitude, double longitude, double hight, 
+			double alphaX, double alphaY, double alphaZ) {
 		super();
 		this.name = name;
 		this.latitude = latitude;
@@ -49,6 +51,20 @@ public class ThreeDObject implements Serializable, Geolocation {
 		this.type = type;
 	}
 
+	public ThreeDObject(String name, Enum<? extends TypeMarker> type, 
+			double latitude, double longitude, double hight, 
+			double alphaX, double alphaY, double alphaZ) {
+		super();
+		this.name = name;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.hight = hight;
+		this.alphaX = alphaX;
+		this.alphaY = alphaY;
+		this.alphaZ = alphaZ;
+		this.type = type.name();
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -57,12 +73,16 @@ public class ThreeDObject implements Serializable, Geolocation {
 		this.name = name;
 	}
 	
-	public ObjectType getType() {
+	public String getType() {
 		return type;
 	}
 	
-	public void setType(ObjectType type) {
-		this.type = type;
+	public void setType(Enum<? extends TypeMarker> type) {
+		this.type = type.name();
+	}
+
+	public void setType(String type) {
+		this.type = name;
 	}
 
 	public double getLatitude() {

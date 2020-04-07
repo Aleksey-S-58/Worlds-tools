@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import utils.IntegrationTest;
-
+import config.service.SimpleTypeServiceConfig;
 import config.web.WebConfiguration;
 
 /**
@@ -26,7 +26,7 @@ import config.web.WebConfiguration;
  */
 @Category(IntegrationTest.class)
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {WebConfiguration.class}, loader = AnnotationConfigWebContextLoader.class)
+@ContextConfiguration(classes = {WebConfiguration.class, SimpleTypeServiceConfig.class}, loader = AnnotationConfigWebContextLoader.class)
 @WebAppConfiguration
 public class MapControllerIT implements IntegrationTest{
 	
@@ -98,7 +98,7 @@ public class MapControllerIT implements IntegrationTest{
 	
 	@Test
 	public void getSupportedObjectTypesTest() throws Exception {
-		String response = "[\"THREE_D_OBJECT\",\"SPRITE\"]";
+		String response = "[\"SPRITE\",\"THREE_D_OBJECT\"]";
 		mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:11080/map/supported/object/types"))
 		.andExpect(MockMvcResultMatchers.status().isOk())
 		.andExpect(MockMvcResultMatchers.content().bytes(response.getBytes()));
