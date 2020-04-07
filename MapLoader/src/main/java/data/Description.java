@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -37,10 +35,10 @@ public class Description implements Serializable {
 	
 	/**
 	 * Defines is an object a 3DO or a sprite.
+	 * See {@link ObjectType}
 	 */
-	@Enumerated(EnumType.STRING)
 	@Column(name = "object_type")
-	private ObjectType type;
+	private String type;
 	
 	/**
 	 * The same objectId like in Location.objectId.
@@ -56,8 +54,17 @@ public class Description implements Serializable {
 	private double radius;
 
 	public Description() {}
-	
-	public Description(long id, String name, ObjectType type, long objectId, double radius) {
+
+	public Description(long id, String name, Enum<? extends TypeMarker> type, long objectId, double radius) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.objectId = objectId;
+		this.radius = radius;
+		this.type = type.name();
+	}
+
+	public Description(long id, String name, String type, long objectId, double radius) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -82,11 +89,15 @@ public class Description implements Serializable {
 		this.name = name;
 	}
 	
-	public ObjectType getType() {
+	public String getType() {
 		return type;
 	}
 	
-	public void setType(ObjectType type) {
+	public void setType(Enum<? extends TypeMarker> type) {
+		this.type = type.name();
+	}
+
+	public void setType(String type) {
 		this.type = type;
 	}
 

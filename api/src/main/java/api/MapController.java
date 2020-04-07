@@ -14,11 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import data.ObjectType;
+import data.TypeMarker;
 import dto.ThreeDObject;
 import service.ApiService;
 import service.MapService;
 import service.ThreeDObjectService;
+import service.TypeService;
 
 /**
  * This controller provides methods that allows:
@@ -47,10 +48,15 @@ public class MapController {
 	
 	private ApiService apiService;
 	
-	public MapController(ThreeDObjectService objectService, @Qualifier("ormBasedMap") MapService mapService, ApiService apiService) {
+	private TypeService typeService;
+	
+	public MapController(ThreeDObjectService objectService, 
+			@Qualifier("ormBasedMap") MapService mapService, 
+			ApiService apiService, TypeService typeService) {
 		this.objectService = objectService;
 		this.mapService = mapService;
 		this.apiService = apiService;
+		this.typeService = typeService;
 	}
 	
 	@RequestMapping(value = "/map", method = RequestMethod.GET, produces = "text/html")
@@ -112,15 +118,15 @@ public class MapController {
 		String info = apiService.getSpriteOptions();
 		return options("GET,OPTIONS", info);
 	}
-	
+
 	// Functionality
-	
+
 	@GetMapping(value = "/map/supported/object/types")
 	@ResponseBody
-	public ResponseEntity<ObjectType[]> getObjectTypes() {
-		return ResponseEntity.ok(ObjectType.values());
+	public ResponseEntity<Enum<? extends TypeMarker>[]> getObjectTypes() {
+		return ResponseEntity.ok(typeService.getObjectTypes());
 	}
-	
+
 	@GetMapping("/map/{hight}/{latitude}/{longitude}")
 	@ResponseBody
 	public ResponseEntity<List<ThreeDObject>> getObjects(@PathVariable("hight") double hight, 
