@@ -17,8 +17,17 @@
 		<spring-version>5.1.2.RELEASE</spring-version>
 		<hibernate.version>5.2.17.Final</hibernate.version>
 	</properties>
-	
+
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>../LICENSE.md</directory>
+				<targetPath>META-INF</targetPath>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
         		<groupId>org.apache.maven.plugins</groupId>
