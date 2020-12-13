@@ -1,5 +1,8 @@
 package api;
 
+import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -98,10 +101,12 @@ public class MapControllerIT implements IntegrationTest{
 	
 	@Test
 	public void getSupportedObjectTypesTest() throws Exception {
-		String response = "[\"SPRITE\",\"THREE_D_OBJECT\"]";
+		Matcher<String> spriteMatcher = Matchers.containsString("SPRITE");
+		Matcher<String> threeDOMatcher = Matchers.containsString("THREE_D_OBJECT");
+		Matcher<String> matcher = Matchers.allOf(spriteMatcher, threeDOMatcher);
 		mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:11080/map/supported/object/types"))
 		.andExpect(MockMvcResultMatchers.status().isOk())
-		.andExpect(MockMvcResultMatchers.content().bytes(response.getBytes()));
+		.andExpect(MockMvcResultMatchers.content().string(matcher));
 	}
 	
 	@Test
