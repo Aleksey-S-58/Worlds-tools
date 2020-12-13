@@ -82,7 +82,7 @@ public class ThreeDObject implements Serializable, Geolocation {
 	}
 
 	public void setType(String type) {
-		this.type = name;
+		this.type = type;
 	}
 
 	public double getLatitude() {

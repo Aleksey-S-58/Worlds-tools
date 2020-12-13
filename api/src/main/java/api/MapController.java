@@ -51,7 +51,7 @@ public class MapController {
 	private TypeService typeService;
 	
 	public MapController(ThreeDObjectService objectService, 
-			@Qualifier("ormBasedMap") MapService mapService, 
+			 MapService mapService, 
 			ApiService apiService, TypeService typeService) {
 		this.objectService = objectService;
 		this.mapService = mapService;
@@ -129,7 +129,7 @@ public class MapController {
 
 	@GetMapping("/map/{hight}/{latitude}/{longitude}")
 	@ResponseBody
-	public ResponseEntity<List<ThreeDObject>> getObjects(@PathVariable("hight") double hight, 
+	public ResponseEntity< List<? extends ThreeDObject>> getObjects(@PathVariable("hight") double hight, 
 			@PathVariable("latitude") double latitude, 
 			@PathVariable("longitude") double longitude) {
 		return ResponseEntity.ok(mapService.getObjects(hight, latitude, longitude));

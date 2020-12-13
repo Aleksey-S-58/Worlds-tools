@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import data.Description;
@@ -25,7 +24,6 @@ import service.Square;
  * @author Aleksey Shishkin
  *
  */
-@Service("ormBasedMap")
 public class ORMBasedMap implements MapService {
 	
 	public static final String UNKNOWN_OBJECT = "Unknown";

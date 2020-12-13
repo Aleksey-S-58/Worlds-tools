@@ -86,7 +86,7 @@ public class ORMBasedMapTest {
 	public void simpleTest() {
 		prepareAll();
 		MapService service = getMapService();
-		List<ThreeDObject> result = service.getObjects(0, 0, 0);
+		List<? extends ThreeDObject> result = service.getObjects(0, 0, 0);
 		Assert.assertTrue(result.isEmpty());
 	}
 	
@@ -94,7 +94,7 @@ public class ORMBasedMapTest {
 	public void twoObjectsTest() {
 		prepareAll();
 		MapService service = getMapService();
-		List<ThreeDObject> result = service.getObjects(0, 4, 5);
+		List<? extends ThreeDObject> result = service.getObjects(0, 4, 5);
 		Assert.assertTrue(result.size() == 1);
 		ThreeDObject object = result.get(0);
 		Assert.assertTrue(object.getName().equals(DESCRIPTION_1));
@@ -104,7 +104,7 @@ public class ORMBasedMapTest {
 	public void theSecondIsVisibleTest() {
 		prepareAll();
 		MapService service = getMapService();
-		List<ThreeDObject> result = service.getObjects(0, 3, 5);
+		List<? extends ThreeDObject> result = service.getObjects(0, 3, 5);
 		Assert.assertTrue(result.size() == 1);
 		ThreeDObject object = result.get(0);
 		Assert.assertTrue(object.getName().equals(DESCRIPTION_2));
@@ -114,7 +114,7 @@ public class ORMBasedMapTest {
 	public void theThirdIsVisibleTest() {
 		prepareAll();
 		MapService service = getMapService();
-		List<ThreeDObject> result = service.getObjects(0, 3, 4);
+		List<? extends ThreeDObject> result = service.getObjects(0, 3, 4);
 		Assert.assertTrue(result.size() == 1);
 		ThreeDObject object = result.get(0);
 		Assert.assertTrue(object.getName().equals(DESCRIPTION_3));
