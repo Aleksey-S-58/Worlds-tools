@@ -44,7 +44,7 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			<version>1.10.1.RELEASE</version>
+			<version>1.11.23.RELEASE</version>
 			<!-- Notification be sure that spring-data-jpa version compatable with jpa-vendor adapter
 				For hibernate check accordingly 
 				org.springframework.orm.jpa.vendor.HibernateJpaDialect.prepareFlushMode()
